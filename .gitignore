@@ -1,0 +1,32 @@
+# Build directories
+build/
+bin/
+obj/
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Object files
+*.o
+*.obj
+
+# Virtual disk file
+virtual_disk.bin
+
+# IDE files
+.vscode/
+.vs/
+*.vcxproj
+*.vcxproj.filters
+*.sln
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*~
