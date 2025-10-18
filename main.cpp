@@ -142,6 +142,13 @@ private:
                   << cache_stats.getHitRatio() << "%" << std::endl;
         std::cout << "Avg latency: " << std::fixed << std::setprecision(1) 
                   << performance_data.avg_latency_ms << "ms" << std::endl;
+        
+        // Show latency improvement
+        if (performance_data.cache_hits > 0 && performance_data.cache_misses > 0) {
+            double improvement = performance_data.getLatencyImprovement();
+            std::cout << "Latency improvement: " << std::fixed << std::setprecision(0) 
+                      << improvement << "%" << std::endl;
+        }
     }
 };
 

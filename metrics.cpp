@@ -24,6 +24,7 @@ void Metrics::recordCacheHit(std::chrono::milliseconds latency) {
     
     data.cache_hits++;
     data.total_latency_ms += static_cast<double>(latency.count());
+    data.cache_hit_latency_ms += static_cast<double>(latency.count());
     updateAverageLatency();
 }
 
@@ -32,6 +33,7 @@ void Metrics::recordCacheMiss(std::chrono::milliseconds latency) {
     
     data.cache_misses++;
     data.total_latency_ms += static_cast<double>(latency.count());
+    data.cache_miss_latency_ms += static_cast<double>(latency.count());
     updateAverageLatency();
 }
 
@@ -44,6 +46,8 @@ MetricsData Metrics::getMetrics() const {
     result.cache_hits = data.cache_hits;
     result.cache_misses = data.cache_misses;
     result.total_latency_ms = data.total_latency_ms;
+    result.cache_hit_latency_ms = data.cache_hit_latency_ms;
+    result.cache_miss_latency_ms = data.cache_miss_latency_ms;
     result.total_operations = data.total_operations;
     result.avg_latency_ms = data.avg_latency_ms;
     return result;
@@ -57,6 +61,8 @@ void Metrics::reset() {
     data.cache_hits = 0;
     data.cache_misses = 0;
     data.total_latency_ms = 0.0;
+    data.cache_hit_latency_ms = 0.0;
+    data.cache_miss_latency_ms = 0.0;
     data.total_operations = 0;
     data.avg_latency_ms = 0.0;
 }
